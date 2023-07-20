@@ -15,10 +15,9 @@ COPY . .
 RUN rm -R doc/
 RUN rm -R node_modules/
 RUN rm -R docker/
-RUN rm -R .git/
-RUN rm -R .idea/
-RUN rm .gitignore
 RUN rm README.md
+RUN rm -R .git/
+RUN rm .gitignore
 
 # update
 RUN apk update
