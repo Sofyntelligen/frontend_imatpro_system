@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+
+  imatpro_frontend_work:
+    build:
+      context: /Users/system01/Documents/repository/python/frontend_imatpro_system
+      dockerfile: /Users/system01/Documents/repository/python/frontend_imatpro_system/docker/work/frontend/Dockerfile
+    container_name: imatpro_frontend_work
+    image: imatpro_frontend_work:latest
+    volumes:
+      - imatpro_frontend:/home/app/frontend/build
+
+  imatpro_nginx_work:
+    build:
+      context: /Users/system01/Documents/repository/python/frontend_imatpro_system
+      dockerfile: /Users/system01/Documents/repository/python/frontend_imatpro_system/docker/work/nginx/Dockerfile
+    container_name: imatpro_nginx_work
+    image: imatpro_nginx_work:latest
+    volumes:
+      - imatpro_frontend:/var/www/frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - imatpro_frontend_work
+
+volumes:
+  imatpro_frontend:
