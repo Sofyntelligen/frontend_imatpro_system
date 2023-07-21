@@ -11,12 +11,12 @@ services:
     volumes:
       - imatpro_frontend:/home/app/frontend/build
 
-  imatpro_nginx_work:
+  imatpro_nginx_frontend_work:
     build:
       context: /Users/system01/Documents/repository/python/frontend_imatpro_system
       dockerfile: /Users/system01/Documents/repository/python/frontend_imatpro_system/docker/work/nginx/Dockerfile
-    container_name: imatpro_nginx_work
-    image: imatpro_nginx_work:latest
+    container_name: imatpro_nginx_frontend_work
+    image: imatpro_nginx_frontend_work:latest
     volumes:
       - imatpro_frontend:/var/www/frontend
     ports:
