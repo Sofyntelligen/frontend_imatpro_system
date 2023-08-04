@@ -1,5 +1,5 @@
-import type { MenuAsideItem } from '../interfaces'
-import { MenuAsideItemPremium } from '../interfaces/premium'
+import type { MenuAsideItem } from '../layouts/interfaces'
+import { MenuAsideItemPremium } from '../layouts/interfaces'
 import AsideMenuItem from './AsideMenuItem'
 
 type Props = {

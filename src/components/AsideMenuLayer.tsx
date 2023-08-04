@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { MenuAsideItemPremium } from '../interfaces/premium'
+import { MenuAsideItemPremium } from '../layouts/interfaces'
 import { useAppSelector } from '../stores/hooks'
 import AsideMenuList from './AsideMenuList'
 

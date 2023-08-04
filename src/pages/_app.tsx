@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   const url = 'https://github.com/josedanielhernandezosorio'
 
-  const image = `https://static.justboil.me/templates/one/repo-tailwind-react.png`
+  const image = `https://`
 
   const imageWidth = '1920'
 

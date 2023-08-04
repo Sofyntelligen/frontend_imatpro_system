@@ -18,3 +18,4 @@ export default function SofyntelligenLogo({ className = '' }: Props) {
     </svg>
   )
 }
+

@@ -1,5 +1,5 @@
 import { Children, ReactNode } from 'react'
-import { controlTextColor } from '../colorsPremium'
+import { controlTextColor } from '../layouts/config/colors'
 import FormFieldHelp from '../components/FormFieldHelp'
 
 type Props = {

@@ -1,6 +1,6 @@
 import { mdiGithub } from '@mdi/js'
 import React from 'react'
-import { gradientBgPinkRed } from '../colors'
+import { gradientBgPinkRed } from '../layouts/config/colors'
 import BaseButton from './BaseButton'
 import SectionBanner from './SectionBanner'
 

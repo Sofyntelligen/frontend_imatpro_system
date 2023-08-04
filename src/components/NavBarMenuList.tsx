@@ -1,5 +1,5 @@
 import React from 'react'
-import { MenuNavBarItem } from '../interfaces'
+import { MenuNavBarItem } from '../layouts/interfaces'
 import NavBarItem from './NavBarItem'
 
 type Props = {

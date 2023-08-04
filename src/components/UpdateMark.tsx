@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { colorsBgLight } from '../colors'
-import type { ColorKey } from '../interfaces'
+import { colorsBgLight } from '../layouts/config/colors'
+import type { ColorKey } from '../layouts/interfaces'
 
 type Props = {
   color: ColorKey

@@ -1,7 +1,7 @@
 import { mdiChevronLeftCircleOutline, mdiChevronRightCircleOutline, mdiClose } from '@mdi/js'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import type { MenuAsideItemPremium } from '../interfaces/premium'
+import type { MenuAsideItemPremium } from '../layouts/interfaces'
 import { useAppSelector } from '../stores/hooks'
 import BaseIcon from '../components/BaseIcon'
 import OverlayLayer from '../components/OverlayLayer'
@@ -114,7 +114,7 @@ const AsideMenu = ({ menu }: Props) => {
         }
       >
         <div className="flex-1 px-3 flex justify-center">
-          <b className="font-black">One</b>
+          <b className="font-black">S</b>
         </div>
       </AsideMenuLayer>
       {!!secondaryMenuItem && (

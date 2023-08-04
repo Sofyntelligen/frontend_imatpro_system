@@ -1,4 +1,4 @@
-import { controlTextColor } from '../colorsPremium'
+import { controlTextColor } from '../layouts/config/colors'
 
 type Props = {
   help?: string

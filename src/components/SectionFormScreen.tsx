@@ -1,15 +1,14 @@
 import Link from 'next/link'
 import { ReactNode } from 'react'
-import { BgKeyPremium } from '../interfaces/premium'
-import { gradientBgDark, gradientBgPinkRed, gradientBgPurplePink } from '../colors'
-import { gradientBgYellowRed, gradientBgRedYellow } from '../colorsPremium'
+import { BgKey } from '../layouts/interfaces'
+import { gradientBgYellowRed, gradientBgRedYellow, gradientBgDark, gradientBgPinkRed, gradientBgPurplePink } from '../layouts/config/colors'
 import { useAppSelector } from '../stores/hooks'
 import BaseButton from '../components/BaseButton'
 import BaseButtons from '../components/BaseButtons'
 import SofyntelligenLogo from '../components/SofyntelligenLogo'
 
 type Props = {
-  bg: BgKeyPremium
+  bg: BgKey
   hasPromo?: boolean
   children: ReactNode
 }

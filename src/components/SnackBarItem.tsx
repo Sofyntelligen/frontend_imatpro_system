@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { SnackBarMessage } from '../interfaces/premium'
-import { getButtonColor } from '../colors'
+import { SnackBarMessage } from '../layouts/interfaces'
+import { getButtonColor } from '../layouts/config/colors'
 import { useAppDispatch } from '../stores/hooks'
 import { cancelMessage } from '../stores/snackBarSlice'
 

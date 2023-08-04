@@ -1,76 +1,92 @@
+import {
+    mdiAccountMultiple,
+    mdiCartOutline,
+    mdiChartPie,
+    mdiChartTimelineVariant,
+    mdiGithub,
+    mdiMonitorCellphone,
+    mdiReload,
+    mdiSemanticWeb,
+} from '@mdi/js'
+
 import Head from 'next/head'
-import Image from 'next/image'
-import { useRouter } from 'next/router'
-import React, { ReactElement } from 'react'
-import CardBox from '../components/CardBox'
-import LayoutGuest from '../layouts/Guest'
+import React, { useEffect, useState } from 'react'
+import type { ReactElement } from 'react'
+import BaseButton from '../components/BaseButton'
+import DashBoardMathematical from '../layouts/DashBoardMathematical'
 import SectionMain from '../components/SectionMain'
-import { StyleKey } from '../interfaces'
-import { gradientBgPurplePink } from '../colors'
-import { appTitle } from '../config'
+import SectionTitleLineWithButton from '../components/SectionTitleLineWithButton'
+import CardBoxWidget from '../components/CardBoxWidget'
+import { useSampleClients, useSampleTransactions } from '../hooks/sampleData'
+import CardBoxTransaction from '../components/CardBoxTransaction'
+import { Client, Transaction } from '../layouts/interfaces'
+import CardBoxClient from '../components/CardBoxClient'
+import SectionBannerStarOnGitHub from '../components/SectionBannerStarOnGitHub'
+import CardBox from '../components/CardBox'
+import { sampleChartData } from '../components/ChartLineSample/config'
+import ChartLineSample from '../components/ChartLineSample'
+import NotificationBar from '../components/NotificationBar'
+import TableSampleClients from '../components/TableSampleClients'
 import { useAppDispatch } from '../stores/hooks'
-import { setDarkMode, setStyle } from '../stores/styleSlice'
+import { pushMessage } from '../stores/snackBarSlice'
+import { getPageTitle } from '../layouts/config/properties'
 
-const StyleSelect = () => {
-  const dispatch = useAppDispatch()
+const DashboardMathematical = () => {
 
-  dispatch(setDarkMode(false))
+  const { clients } = useSampleClients()
+  const { transactions } = useSampleTransactions()
+  const clientsListed = clients.slice(0, 4)
+  const [chartData, setChartData] = useState(sampleChartData())
 
-  const styles: StyleKey[] = ['white', 'basic']
-
-  const router = useRouter()
-
-  const handleStylePick = (e: React.MouseEvent, style: StyleKey) => {
+  const fillChartData = (e: React.MouseEvent) => {
     e.preventDefault()
 
-    dispatch(setStyle(style))
-
-    router.push('/dashboard')
+    setChartData(sampleChartData())
   }
 
+  const [isWelcomePushed, setIsWelcomePushed] = useState(false)
+
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if (!isWelcomePushed) {
+      setIsWelcomePushed(true)
+
+      dispatch(
+          pushMessage({
+            text: 'Welcome. This is demo',
+            color: 'contrast',
+            lifetime: 3000,
+          })
+      )
+    }
+  }, [isWelcomePushed, dispatch])
+
   return (
-    <>
-      <Head>
-        <title>{appTitle}</title>
-      </Head>
-      <div className={`flex min-h-screen items-center justify-center ${gradientBgPurplePink}`}>
+      <>
+        <Head>
+          <title>{getPageTitle('Dashboard')}</title>
+        </Head>
         <SectionMain>
-          <h1 className="text-4xl md:text-5xl text-center text-white font-bold mt-12 mb-3 lg:mt-0">
-            Pick a style&hellip;
-          </h1>
-          <h2 className="text-xl md:text-xl text-center text-white mb-12">
-            Style switching with a single{' '}
-            <code className="px-1.5 py-0.5 rounded bg-white bg-opacity-20">action()</code>
-          </h2>
-          <div className="grid gap-6 grid-cols-1 lg:grid-cols-2 px-6 max-w-6xl mx-auto">
-            {styles.map((style) => (
-              <CardBox
-                key={style}
-                className="cursor-pointer bg-gray-50"
-                isHoverable
-                onClick={(e) => handleStylePick(e, style)}
-              >
-                <div className="mb-3 md:mb-6">
-                  <Image
-                    src={`https://static.justboil.me/templates/one/small/${style}-v3.png`}
-                    width={1280}
-                    height={720}
-                    alt={style}
-                  />
-                </div>
-                <h1 className="text-xl md:text-2xl font-black capitalize">{style}</h1>
-                <h2 className="text-lg md:text-xl">& Dark mode</h2>
-              </CardBox>
-            ))}
-          </div>
+          <SectionTitleLineWithButton icon={mdiSemanticWeb} title="" main>
+            <BaseButton
+                href="https://github.com/josedanielhernandezosorio"
+                target="_blank"
+                icon={mdiGithub}
+                label="Star on GitHub"
+                color="contrast"
+                roundedFull
+                small
+            />
+          </SectionTitleLineWithButton>
+
         </SectionMain>
-      </div>
-    </>
+      </>
   )
 }
 
-StyleSelect.getLayout = function getLayout(page: ReactElement) {
-  return <LayoutGuest>{page}</LayoutGuest>
+DashboardMathematical.getLayout = function getLayout(page: ReactElement) {
+  return <DashBoardMathematical>{page}</DashBoardMathematical>
 }
 
-export default StyleSelect
+export default DashboardMathematical

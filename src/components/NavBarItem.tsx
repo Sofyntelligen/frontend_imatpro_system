@@ -7,7 +7,7 @@ import BaseIcon from './BaseIcon'
 import UserAvatarCurrentUser from './UserAvatarCurrentUser'
 import NavBarMenuList from './NavBarMenuList'
 import { useAppDispatch, useAppSelector } from '../stores/hooks'
-import { MenuNavBarItem } from '../interfaces'
+import { MenuNavBarItem } from '../layouts/interfaces'
 import { setDarkMode } from '../stores/styleSlice'
 
 type Props = {

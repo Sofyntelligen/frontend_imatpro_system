@@ -1,6 +1,6 @@
 import { mdiClose } from '@mdi/js'
 import { ReactNode, useState } from 'react'
-import type { ColorButtonKey } from '../interfaces'
+import type { ColorButtonKey } from '../layouts/interfaces'
 import BaseButton from '../components/BaseButton'
 import BaseButtons from '../components/BaseButtons'
 import CardBox from '../components/CardBox'

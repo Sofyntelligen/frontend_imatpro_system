@@ -1,4 +1,4 @@
-import { ColorKey, TrendType } from '../interfaces'
+import { ColorKey, TrendType } from '../layouts/interfaces'
 import BaseDivider from '../components/BaseDivider'
 import IconRounded from '../components/IconRounded'
 // import PillTagTrend from '../PillTagTrend'
