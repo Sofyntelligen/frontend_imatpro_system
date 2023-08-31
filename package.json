@@ -12,6 +12,7 @@
     "@headlessui/react": "^1.7.4",
     "@mdi/js": "^7.0.96",
     "@reduxjs/toolkit": "^1.8.5",
+    "better-react-mathjax": "^2.0.2",
     "chart.js": "^3.9.1",
     "formik": "^2.2.9",
     "next": "^13.0.4",

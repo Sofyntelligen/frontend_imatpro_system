@@ -1,5 +1,5 @@
 const FormControl = () => {
-  return <div>void</div>
+    return <div>void</div>
 }
 
 export default FormControl

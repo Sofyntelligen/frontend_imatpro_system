@@ -1,17 +1,17 @@
 import React from 'react'
-import { MenuNavBarItem } from '../layouts/interfaces'
+import {MenuNavBarItem} from '../layouts/interfaces'
 import NavBarItem from './NavBarItem'
 
 type Props = {
-  menu: MenuNavBarItem[]
+    menu: MenuNavBarItem[]
 }
 
-export default function NavBarMenuList({ menu }: Props) {
-  return (
-    <>
-      {menu.map((item, index) => (
-        <NavBarItem key={index} item={item} />
-      ))}
-    </>
-  )
+export default function NavBarMenuList({menu}: Props) {
+    return (
+        <>
+            {menu.map((item, index) => (
+                <NavBarItem key={index} item={item}/>
+            ))}
+        </>
+    )
 }

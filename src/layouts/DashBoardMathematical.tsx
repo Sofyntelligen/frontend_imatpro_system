@@ -1,5 +1,5 @@
-import React, { ReactNode, useEffect } from 'react'
-import { mdiForwardburger, mdiBackburger, mdiMenu } from '@mdi/js'
+import React, {ReactNode, useEffect} from 'react'
+import {mdiForwardburger, mdiBackburger, mdiMenu} from '@mdi/js'
 import DefinitionAside from './config/menu/DefinitionAside'
 import DefinitionNarBar from './config/menu/DefinitionNarBar'
 import BaseIcon from '../components/BaseIcon'
@@ -7,19 +7,19 @@ import NavBar from '../components/NavBar'
 import NavBarItemPlain from '../components/NavBarItemPlain'
 import AsideMenu from '../components/AsideMenu'
 import FooterBar from '../components/FooterBar'
-import { setUser } from '../stores/mainSlice'
-import { useAppDispatch, useAppSelector } from '../stores/hooks'
-import { asideLgToggle, asideMobileToggle, setIsAsideMobileExpanded } from '../stores/layoutSlice'
+import {setUser} from '../stores/mainSlice'
+import {useAppDispatch, useAppSelector} from '../stores/hooks'
+import {asideLgToggle, asideMobileToggle, setIsAsideMobileExpanded} from '../stores/layoutSlice'
 import SnackBar from '../components/SnackBar'
 import FormField from '../components/FormField'
-import { Field, Form, Formik } from 'formik'
-import { useRouter } from 'next/router'
+import {Field, Form, Formik} from 'formik'
+import {useRouter} from 'next/router'
 
 type Props = {
     children: ReactNode
 }
 
-export default function DashBoardMathematical({ children }: Props) {
+export default function DashBoardMathematical({children}: Props) {
 
     const dispatch = useAppDispatch()
 
@@ -68,13 +68,13 @@ export default function DashBoardMathematical({ children }: Props) {
                     className={`${layoutAsidePadding} ${isAsideMobileExpanded ? 'ml-60 lg:ml-0' : ''}`}
                 >
                     <NavBarItemPlain display="flex lg:hidden" onClick={() => dispatch(asideMobileToggle())}>
-                        <BaseIcon path={isAsideMobileExpanded ? mdiBackburger : mdiForwardburger} size="24" />
+                        <BaseIcon path={isAsideMobileExpanded ? mdiBackburger : mdiForwardburger} size="24"/>
                     </NavBarItemPlain>
                     <NavBarItemPlain
                         display="hidden lg:flex xl:hidden"
                         onClick={() => dispatch(asideLgToggle())}
                     >
-                        <BaseIcon path={mdiMenu} size="24" />
+                        <BaseIcon path={mdiMenu} size="24"/>
                     </NavBarItemPlain>
                     <NavBarItemPlain useMargin>
                         <Formik
@@ -85,13 +85,14 @@ export default function DashBoardMathematical({ children }: Props) {
                         >
                             <Form>
                                 <FormField isBorderless isTransparent>
-                                    <Field name="search" placeholder="Search" />
+                                    <Field name="search" placeholder="Search"/>
                                 </FormField>
                             </Form>
                         </Formik>
                     </NavBarItemPlain>
                 </NavBar>
-                <AsideMenu menu={DefinitionAside} />
+                <AsideMenu menu={DefinitionAside}/>
+
                 {children}
                 <FooterBar>
                     <a
@@ -105,7 +106,7 @@ export default function DashBoardMathematical({ children }: Props) {
                     version
                 </FooterBar>
 
-                <SnackBar />
+                <SnackBar/>
             </div>
         </div>
     )
