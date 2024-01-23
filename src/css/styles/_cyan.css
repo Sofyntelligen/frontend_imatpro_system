@@ -1,0 +1,37 @@
+@layer components {
+  .style-cyan:not(.dark) {
+    .aside {
+      @apply bg-cyan-800;
+    }
+    .aside-scrollbars {
+      @apply aside-scrollbars-[cyan];
+    }
+    .aside-brand {
+      @apply bg-cyan-900 text-white;
+    }
+    .aside-menu-item {
+      @apply text-cyan-300 hover:text-white;
+    }
+    .aside-menu-item-active {
+      @apply text-white;
+    }
+    .aside-menu-item-active-bg {
+      @apply bg-cyan-600/25;
+    }
+    .aside-menu-item-inactive {
+      @apply text-cyan-300;
+    }
+    .aside-menu-dropdown {
+      @apply bg-cyan-700/50;
+    }
+    .navbar-item-label {
+      @apply text-black hover:text-blue-500;
+    }
+    .navbar-item-label-active {
+      @apply text-blue-600;
+    }
+    .overlay {
+      @apply from-cyan-50 via-cyan-200 to-cyan-50;
+    }
+  }
+}

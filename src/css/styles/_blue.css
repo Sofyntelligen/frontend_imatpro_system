@@ -1,0 +1,37 @@
+@layer components {
+  .style-blue:not(.dark) {
+    .aside {
+      @apply bg-blue-800;
+    }
+    .aside-scrollbars {
+      @apply aside-scrollbars-[blue];
+    }
+    .aside-brand {
+      @apply bg-blue-900 text-white;
+    }
+    .aside-menu-item {
+      @apply text-blue-300 hover:text-white;
+    }
+    .aside-menu-item-active {
+      @apply text-white;
+    }
+    .aside-menu-item-active-bg {
+      @apply bg-blue-600/25;
+    }
+    .aside-menu-item-inactive {
+      @apply text-blue-300;
+    }
+    .aside-menu-dropdown {
+      @apply bg-blue-700/50;
+    }
+    .navbar-item-label {
+      @apply text-black hover:text-blue-500;
+    }
+    .navbar-item-label-active {
+      @apply text-blue-600;
+    }
+    .overlay {
+      @apply from-blue-50 via-blue-200 to-blue-50;
+    }
+  }
+}

@@ -1,8 +1,26 @@
-@import "tailwind/_base.css";
-@import "tailwind/_components.css";
-@import "tailwind/_utilities.css";
+@import 'tailwind/_base.css';
+@import 'tailwind/_components.css';
+@import 'tailwind/_utilities.css';
 
-@import "_checkbox-radio-switch.css";
-@import "_progress.css";
-@import "_scrollbars.css";
-@import "_table.css";
+@import '_checkbox-radio-switch.css';
+@import '_progress.css';
+@import '_scrollbars.css';
+@import '_table.css';
+
+@import 'styles/_basic.css';
+@import 'styles/_white.css';
+@import 'styles/_slate.css';
+@import 'styles/_zinc.css';
+@import 'styles/_stone.css';
+@import 'styles/_neutral.css';
+@import 'styles/_emerald.css';
+@import 'styles/_teal.css';
+@import 'styles/_cyan.css';
+@import 'styles/_sky.css';
+@import 'styles/_blue.css';
+@import 'styles/_indigo.css';
+@import 'styles/_violet.css';
+@import 'styles/_purple.css';
+@import 'styles/_fuchsia.css';
+@import 'styles/_pink.css';
+@import 'styles/_rose.css';

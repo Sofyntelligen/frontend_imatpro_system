@@ -1,0 +1,37 @@
+@layer components {
+  .style-rose:not(.dark) {
+    .aside {
+      @apply bg-rose-800;
+    }
+    .aside-scrollbars {
+      @apply aside-scrollbars-[rose];
+    }
+    .aside-brand {
+      @apply bg-rose-900 text-white;
+    }
+    .aside-menu-item {
+      @apply text-rose-300 hover:text-white;
+    }
+    .aside-menu-item-active {
+      @apply text-white;
+    }
+    .aside-menu-item-active-bg {
+      @apply bg-rose-600/25;
+    }
+    .aside-menu-item-inactive {
+      @apply text-rose-300;
+    }
+    .aside-menu-dropdown {
+      @apply bg-rose-700/50;
+    }
+    .navbar-item-label {
+      @apply text-black hover:text-rose-500;
+    }
+    .navbar-item-label-active {
+      @apply text-rose-600;
+    }
+    .overlay {
+      @apply from-rose-50 via-rose-200 to-rose-50;
+    }
+  }
+}
