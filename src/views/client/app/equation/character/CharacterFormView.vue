@@ -1,46 +1,34 @@
 <script setup>
-import { ref, onMounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import { mdiKeyboardReturn, mdiAlphabetCyrillic } from "@mdi/js";
-import SectionMain from "@/components/SectionMain.vue";
-import SectionTitleLineWithButton from "@/components/SectionTitleLineWithButton.vue";
-import CardBoxWidgetMathJax from "@/components/equation/character/CardBoxWidgetMathJax.vue";
-import BaseLevel from "@/components/BaseLevel.vue";
-import BaseButtons from "@/components/BaseButtons.vue";
+import { reactive } from "vue";
+import { useMainStore } from "@/stores/main.js";
+import { mdiBallot, mdiAccount } from "@mdi/js";
+import CardBox from "@/components/CardBox.vue";
+import FormField from "@/components/FormField.vue";
+import FormControl from "@/components/FormControl.vue";
 import BaseButton from "@/components/BaseButton.vue";
-import LayoutAuthenticatedHome from "@/layouts/LayoutAuthenticatedHome.vue";
-import getData from "@/services/ServiceGenericGet.js";
 
-const character = ref({});
-const route = useRoute();
-const router = useRouter();
+const mainStore = useMainStore();
 
-onMounted(() => {
-  getData("/character/", route.params.id).then((result) => {
-    character.value = result;
-    console.log(result);
-  });
-});
-
-const redirectReload = async () => {
-  await router.push({ name: "characterSearch" });
-  router.go();
+const submit = () => {
+  mainStore.pushMessage("Done! Demo only...", "contrast");
 };
 </script>
 
 <template>
-  <LayoutAuthenticatedHome>
-    <SectionMain>
-      <SectionTitleLineWithButton :icon="mdiAlphabetCyrillic" title="Edit Character" main>
-        <BaseButton
-          label="Return"
-          :icon="mdiKeyboardReturn"
-          color="contrast"
-          rounded-full
-          small
-          @click="redirectReload"
-        />
-      </SectionTitleLineWithButton>
-    </SectionMain>
-  </LayoutAuthenticatedHome>
+  <CardBox :icon="mdiBallot" is-form @submit.prevent="submit">
+    <FormField label="Fields" horizontal>
+      <FormControl :icon-left="mdiAccount" help="Your full name" placeholder="Name" />
+    </FormField>
+    <FormField label="Fields" horizontal>
+      <FormControl :icon-left="mdiAccount" help="Your full name" placeholder="Name" />
+    </FormField>
+    <FormField label="Textarea" help="Your question. Max 255 characters" horizontal>
+      <FormControl type="textarea" placeholder="Explain how we can help you" />
+    </FormField>
+    <template #footer>
+      <FormField horizontal grouped>
+        <BaseButton label="Submit" type="submit" color="info" />
+      </FormField>
+    </template>
+  </CardBox>
 </template>

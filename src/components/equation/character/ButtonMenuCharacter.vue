@@ -56,7 +56,7 @@ const modalDeleteActive = ref(false);
 const idDeleteActive = ref(-1);
 
 const router = useRouter();
-const emit = defineEmits(["update:modelValue", "confirm"]);
+const emit = defineEmits(["update:modelValue"]);
 
 computed({
   get: () => props.modelValue,

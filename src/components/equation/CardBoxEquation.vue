@@ -4,7 +4,6 @@ import { mdiDotsVertical, mdiHandOkay } from "@mdi/js";
 import CardBox from "@/components/CardBox.vue";
 import BaseLevel from "@/components/BaseLevel.vue";
 import PillTag from "@/components/PillTag.vue";
-import UserAvatar from "@/components/UserAvatar.vue";
 import ButtonMenu from "@/components/ButtonMenu.vue";
 import BaseButtons from "@/components/BaseButtons.vue";
 import VueMathjax from "vue-mathjax-next";

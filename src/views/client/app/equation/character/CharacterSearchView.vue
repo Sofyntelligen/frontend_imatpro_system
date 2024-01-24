@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import { mdiGithub, mdiAlphabetCyrillic, mdiPlusThick } from "@mdi/js";
 import SectionMain from "@/components/SectionMain.vue";
 import SectionTitleLineWithButton from "@/components/SectionTitleLineWithButton.vue";
@@ -29,7 +29,7 @@ const getCharacter = (page) => {
 };
 
 const redirectReload = async () => {
-  await router.push({ name: "characterAdd" });
+  await router.push({ path: "/equation/character/add" });
   router.go();
 };
 </script>
