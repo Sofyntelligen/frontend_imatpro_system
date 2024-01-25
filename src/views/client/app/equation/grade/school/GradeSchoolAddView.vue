@@ -1,6 +1,6 @@
 <script setup>
 import { useRouter } from "vue-router";
-import { mdiKeyboardReturn, mdiAlphabetCyrillic, mdiBallot, mdiAccount } from "@mdi/js";
+import { mdiKeyboardReturn, mdiChairSchool, mdiBallot, mdiAccount } from "@mdi/js";
 import SectionMain from "@/components/SectionMain.vue";
 import SectionTitleLineWithButton from "@/components/SectionTitleLineWithButton.vue";
 import BaseButton from "@/components/BaseButton.vue";
@@ -16,7 +16,7 @@ const submit = () => {
 };
 
 const redirectReload = async () => {
-  await router.push({ name: "CharacterSearch" });
+  await router.push({ name: "GradeSchoolSearch" });
   router.go();
 };
 </script>
@@ -24,7 +24,7 @@ const redirectReload = async () => {
 <template>
   <LayoutAuthenticatedHome>
     <SectionMain>
-      <SectionTitleLineWithButton :icon="mdiAlphabetCyrillic" title="Add Character" main>
+      <SectionTitleLineWithButton :icon="mdiChairSchool" title="Add Grade School" main>
         <BaseButton
           label="Return"
           :icon="mdiKeyboardReturn"

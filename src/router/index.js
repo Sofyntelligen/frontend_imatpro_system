@@ -8,7 +8,7 @@ const routes = [
       title: 'Dashboard'
     },
     path: '/',
-    name: 'dashboard',
+    name: 'Dashboard',
     component: () => import('@/views/client/app/dashboard/HomeView.vue')
   },
   {
@@ -20,7 +20,7 @@ const routes = [
       title: 'Profile'
     },
     path: '/profile',
-    name: 'profile',
+    name: 'Profile',
     component: () => import('@/views/client/app/user/ProfileView.vue')
   },
   {
@@ -28,7 +28,7 @@ const routes = [
       title: 'Login'
     },
     path: '/login',
-    name: 'login',
+    name: 'Login',
     component: () => import('@/views/client/app/LoginView.vue')
   },
   {
@@ -36,7 +36,7 @@ const routes = [
       title: 'Sign up'
     },
     path: '/signup',
-    name: 'signup',
+    name: 'SignUp',
     component: () => import('@/views/client/app/SignupView.vue')
   },
   {
@@ -44,7 +44,7 @@ const routes = [
       title: 'Remind Password'
     },
     path: '/remind',
-    name: 'remind',
+    name: 'Remind',
     component: () => import('@/views/client/app/RemindView.vue')
   },
   {
@@ -52,7 +52,7 @@ const routes = [
       title: 'Character Search'
     },
     path: '/equation/character',
-    name: 'characterSearch',
+    name: 'CharacterSearch',
     component: () => import('@/views/client/app/equation/character/CharacterSearchView.vue')
   },
   {
@@ -60,7 +60,7 @@ const routes = [
       title: 'Character Add'
     },
     path: '/equation/character/add',
-    name: 'characterAdd',
+    name: 'CharacterAdd',
     component: () => import('@/views/client/app/equation/character/CharacterAddView.vue')
   },
   {
@@ -68,15 +68,63 @@ const routes = [
       title: 'Character Update'
     },
     path: '/equation/character/update/:id',
-    name: 'characterUpdate',
+    name: 'CharacterUpdate',
     component: () => import('@/views/client/app/equation/character/CharacterUpdateView.vue')
+  },
+  {
+    meta: {
+      title: 'Type Equation Search'
+    },
+    path: '/equation/type/equation',
+    name: 'TypeEquationSearch',
+    component: () => import('@/views/client/app/equation/type/equation/TypeEquationSearchView.vue')
+  },
+  {
+    meta: {
+      title: 'Type Equation Add'
+    },
+    path: '/equation/type/equation/add',
+    name: 'TypeEquationAdd',
+    component: () => import('@/views/client/app/equation/type/equation/TypeEquationAddView.vue')
+  },
+  {
+    meta: {
+      title: 'Type Equation Update'
+    },
+    path: '/equation/type/equation/update/:id',
+    name: 'TypeEquationUpdate',
+    component: () => import('@/views/client/app/equation/type/equation/TypeEquationUpdateView.vue')
+  },
+  {
+    meta: {
+      title: 'Grade School Search'
+    },
+    path: '/equation/grade/school',
+    name: 'GradeSchoolSearch',
+    component: () => import('@/views/client/app/equation/grade/school/GradeSchoolSearchView.vue')
+  },
+  {
+    meta: {
+      title: 'Grade School Add'
+    },
+    path: '/equation/grade/school/add',
+    name: 'GradeSchoolAdd',
+    component: () => import('@/views/client/app/equation/grade/school/GradeSchoolAddView.vue')
+  },
+  {
+    meta: {
+      title: 'Grade School Update'
+    },
+    path: '/equation/grade/school/update/:id',
+    name: 'GradeSchoolUpdate',
+    component: () => import('@/views/client/app/equation/grade/school/GradeSchoolUpdateView.vue')
   },
   {
     meta: {
       title: 'Error'
     },
     path: '/error',
-    name: 'error',
+    name: 'Error',
     component: () => import('@/views/client/app/ErrorView.vue')
   }
 ]

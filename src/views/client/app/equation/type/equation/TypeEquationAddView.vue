@@ -1,6 +1,6 @@
 <script setup>
 import { useRouter } from "vue-router";
-import { mdiKeyboardReturn, mdiAlphabetCyrillic, mdiBallot, mdiAccount } from "@mdi/js";
+import { mdiKeyboardReturn, mdiAbacus, mdiBallot, mdiAccount } from "@mdi/js";
 import SectionMain from "@/components/SectionMain.vue";
 import SectionTitleLineWithButton from "@/components/SectionTitleLineWithButton.vue";
 import BaseButton from "@/components/BaseButton.vue";
@@ -24,7 +24,7 @@ const redirectReload = async () => {
 <template>
   <LayoutAuthenticatedHome>
     <SectionMain>
-      <SectionTitleLineWithButton :icon="mdiAlphabetCyrillic" title="Add Character" main>
+      <SectionTitleLineWithButton :icon="mdiAbacus" title="Add Type Equation" main>
         <BaseButton
           label="Return"
           :icon="mdiKeyboardReturn"

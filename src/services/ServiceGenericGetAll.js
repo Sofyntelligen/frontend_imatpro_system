@@ -5,7 +5,7 @@ async function getAllData(endpoint, page) {
   params.append('page', page)
 
   try {
-    const response = await ServiceGeneric.getAll(endpoint, { params })
+    const response = await ServiceGeneric.getAll(endpoint, params)
     return response.data
   } catch (error) {
     console.error('GET request Generic error : ', error)

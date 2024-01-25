@@ -6,7 +6,9 @@ import {
   mdiMenuOpen,
   mdiOpenInNew,
   mdiFormDropdown,
-  mdiAlphabetCyrillic
+  mdiAlphabetCyrillic,
+  mdiAbacus,
+  mdiChairSchool
 } from '@mdi/js'
 
 export default [
@@ -35,6 +37,16 @@ export default [
         to: '/equation/character',
         label: 'Character Equation',
         icon: mdiAlphabetCyrillic
+      },
+      {
+        to: '/equation/type/equation',
+        label: 'Type Equation',
+        icon: mdiAbacus
+      },
+      {
+        to: '/equation/grade/school',
+        label: 'Grade School',
+        icon: mdiChairSchool
       },
       {
         label: 'External link',

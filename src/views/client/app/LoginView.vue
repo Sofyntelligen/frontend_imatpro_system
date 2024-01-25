@@ -16,8 +16,6 @@ import LayoutGuest from "@/layouts/LayoutGuest.vue";
 import getAuthenticationUser from "@/services/ServiceLogin.js";
 
 const form = reactive({
-  login: "",
-  pass: "",
   remember: ["remember"],
 });
 
@@ -59,7 +57,7 @@ const submit = () => {
 };
 
 const redirectReload = async () => {
-  await router.push({ name: "dashboard" });
+  await router.push({ name: "Dashboard" });
   router.go();
 };
 </script>

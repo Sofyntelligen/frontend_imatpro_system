@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { mdiGithub, mdiAlphabetCyrillic, mdiPlusThick } from "@mdi/js";
+import { mdiGithub, mdiChairSchool, mdiPlusThick } from "@mdi/js";
 import SectionMain from "@/components/SectionMain.vue";
 import SectionTitleLineWithButton from "@/components/SectionTitleLineWithButton.vue";
 import CardBoxWidgetMathJax from "@/components/equation/character/CardBoxWidgetMathJax.vue";
@@ -21,7 +21,8 @@ onMounted(() => {
 });
 
 const getCharacter = (page) => {
-  getAllData("/character/all", page).then((result) => {
+  getAllData("/catalog/grade_school/all", page).then((result) => {
+    console.log(result);
     listCharacter.value = result.data;
     currentPage.value = page;
     numPages.value = result.pagination.pages;
@@ -29,7 +30,7 @@ const getCharacter = (page) => {
 };
 
 const redirectReload = async () => {
-  await router.push({ name: "CharacterAdd" });
+  await router.push({ name: "GradeSchoolAdd" });
   router.go();
 };
 </script>
@@ -37,7 +38,7 @@ const redirectReload = async () => {
 <template>
   <LayoutAuthenticatedHome>
     <SectionMain>
-      <SectionTitleLineWithButton :icon="mdiAlphabetCyrillic" title="Character" main>
+      <SectionTitleLineWithButton :icon="mdiChairSchool" title="Grade School" main>
         <div>
           <BaseButton
             class="md:mr-3"

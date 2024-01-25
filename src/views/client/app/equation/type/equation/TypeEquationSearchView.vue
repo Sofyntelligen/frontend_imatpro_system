@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { mdiGithub, mdiAlphabetCyrillic, mdiPlusThick } from "@mdi/js";
+import { mdiGithub, mdiAbacus, mdiPlusThick } from "@mdi/js";
 import SectionMain from "@/components/SectionMain.vue";
 import SectionTitleLineWithButton from "@/components/SectionTitleLineWithButton.vue";
 import CardBoxWidgetMathJax from "@/components/equation/character/CardBoxWidgetMathJax.vue";
@@ -21,7 +21,8 @@ onMounted(() => {
 });
 
 const getCharacter = (page) => {
-  getAllData("/character/all", page).then((result) => {
+  getAllData("/catalog/type_equation/all", page).then((result) => {
+    console.log(result);
     listCharacter.value = result.data;
     currentPage.value = page;
     numPages.value = result.pagination.pages;
@@ -37,7 +38,7 @@ const redirectReload = async () => {
 <template>
   <LayoutAuthenticatedHome>
     <SectionMain>
-      <SectionTitleLineWithButton :icon="mdiAlphabetCyrillic" title="Character" main>
+      <SectionTitleLineWithButton :icon="mdiAbacus" title="Type Equation" main>
         <div>
           <BaseButton
             class="md:mr-3"
