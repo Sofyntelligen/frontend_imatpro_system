@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+
+  frontend:
+    build:
+      context: ../../.
+      dockerfile: ./docker/work/server/Dockerfile
+    container_name: imatpro_frontend_work
+    image: imatpro_frontend_work:latest
+    restart: always
+    volumes:
+      - logs_nginx:/var/log/nginx/
+    ports:
+      - '80:80'
+
+volumes:
+  logs_nginx:
