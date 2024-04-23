@@ -10,7 +10,7 @@ import BaseLevel from "@/components/BaseLevel.vue";
 import BaseButtons from "@/components/BaseButtons.vue";
 import BaseButton from "@/components/BaseButton.vue";
 import LayoutAuthenticatedHome from "@/layouts/LayoutAuthenticatedHome.vue";
-import getDataEquationAll from "@/services/ServiceEquationAll.js";
+import getAllData from "@/services/ServiceGenericGetAll";
 
 const snackBarStore = useSnackBarStore();
 
@@ -25,11 +25,13 @@ onMounted(() => {
 });
 
 const getEquationPagination = (page) => {
-  getDataEquationAll("/equation/all", page).then((result) => {
-    listEquation.value = result.data;
-    currentPage.value = page;
-    numPages.value = result.pagination.pages;
-  });
+  getAllData("/equation/all", page, { type_representation: "PRINCIPAL" }).then(
+    (result) => {
+      listEquation.value = result.data;
+      currentPage.value = page;
+      numPages.value = result.pagination.pages;
+    }
+  );
 };
 </script>
 

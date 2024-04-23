@@ -19,9 +19,9 @@ class ServiceGeneric {
     }
   }
 
-  post(endpoint, data) {
+  post(endpoint, body) {
     try {
-      return http.delete(endpoint, data)
+      return http.post(endpoint, body)
     } catch (error) {
       console.error('POST request error : ', error)
       return error.response

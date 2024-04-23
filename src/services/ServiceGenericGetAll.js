@@ -1,7 +1,7 @@
 import ServiceGeneric from '@/services/ServiceGeneric.js'
 
-async function getAllData(endpoint, page) {
-  const params = new URLSearchParams()
+async function getAllData(endpoint, page, addParams) {
+  let params = new URLSearchParams(addParams != undefined ? addParams : {})
   params.append('page', page)
 
   try {
