@@ -53,7 +53,7 @@ const props = defineProps({
 });
 
 const modalDeleteActive = ref(false);
-const idDeleteActive = ref(-1);
+const pathDelete = ref();
 
 const router = useRouter();
 const emit = defineEmits(["update:modelValue"]);
@@ -75,13 +75,13 @@ const redirectReload = async (to) => {
   router.go();
 };
 
-const activeModal = (id) => {
+const activeModal = (to) => {
   modalDeleteActive.value = true;
-  idDeleteActive.value = id;
+  pathDelete.value = to;
 };
 
 const deleteCharacter = () => {
-  deleteData("/character/", idDeleteActive.value);
+  deleteData(pathDelete.value);
   window.location.reload();
 };
 </script>
@@ -133,7 +133,7 @@ const deleteCharacter = () => {
             <button
               :class="{ 'bg-gray-100 dark:bg-slate-700': active }"
               class="group flex rounded-md items-center w-full px-2 py-2 text-sm"
-              @click="index == 0 ? redirectReload(option.to) : activeModal(option.to)"
+              @click="option.id == 3 ? redirectReload(option.to) : activeModal(option.to)"
             >
               <BaseIcon :path="option.icon" class="mr-3" />
               <span>{{ option.label }}</span>

@@ -1,10 +1,10 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { mdiGithub, mdiAbacus, mdiPlusThick } from "@mdi/js";
+import { mdiAbacus, mdiPlusThick } from "@mdi/js";
 import SectionMain from "@/components/SectionMain.vue";
 import SectionTitleLineWithButton from "@/components/SectionTitleLineWithButton.vue";
-import CardBoxWidgetMathJax from "@/components/equation/character/CardBoxWidgetMathJax.vue";
+import CardBoxWidget from "@/components/CardBoxWidget.vue";
 import BaseLevel from "@/components/BaseLevel.vue";
 import BaseButtons from "@/components/BaseButtons.vue";
 import BaseButton from "@/components/BaseButton.vue";
@@ -22,7 +22,6 @@ onMounted(() => {
 
 const getCharacter = (page) => {
   getAllData("/catalog/type_equation/all", page).then((result) => {
-    console.log(result);
     listCharacter.value = result.data;
     currentPage.value = page;
     numPages.value = result.pagination.pages;
@@ -56,13 +55,11 @@ const redirectReload = async () => {
           v-for="data in listCharacter"
           class="col-span-12 sm:col-span-6 xl:col-span-3"
         >
-          <CardBoxWidgetMathJax
-            :trend="data.view"
-            :trend-type="data.active ? 'up' : 'down'"
+          <CardBoxWidget
+            :trend="data.value"
+            trend-type="down"
             color="text-yellow-500"
-            :icon="data.latex_math"
-            :number="data.id"
-            :label="data.description"
+            :label="data.name"
           />
         </div>
       </div>

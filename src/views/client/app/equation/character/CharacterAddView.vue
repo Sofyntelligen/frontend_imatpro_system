@@ -69,7 +69,7 @@ const fromAdd = reactive({});
         </FormField>
         <template #footer>
           <FormField horizontal grouped>
-            <BaseButton label="Update" type="submit" color="info" />
+            <BaseButton label="Save" type="submit" color="info" />
           </FormField>
         </template>
       </CardBox>

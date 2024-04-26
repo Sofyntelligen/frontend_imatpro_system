@@ -1,10 +1,10 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { mdiGithub, mdiChairSchool, mdiPlusThick } from "@mdi/js";
+import { mdiChairSchool, mdiPlusThick } from "@mdi/js";
 import SectionMain from "@/components/SectionMain.vue";
 import SectionTitleLineWithButton from "@/components/SectionTitleLineWithButton.vue";
-import CardBoxWidgetMathJax from "@/components/equation/character/CardBoxWidgetMathJax.vue";
+import CardBoxWidget from "@/components/CardBoxWidget.vue";
 import BaseLevel from "@/components/BaseLevel.vue";
 import BaseButtons from "@/components/BaseButtons.vue";
 import BaseButton from "@/components/BaseButton.vue";
@@ -56,13 +56,11 @@ const redirectReload = async () => {
           v-for="data in listCharacter"
           class="col-span-12 sm:col-span-6 xl:col-span-3"
         >
-          <CardBoxWidgetMathJax
-            :trend="data.view"
-            :trend-type="data.active ? 'up' : 'down'"
+          <CardBoxWidget
+            :trend="data.value"
+            trend-type="down"
             color="text-yellow-500"
-            :icon="data.latex_math"
-            :number="data.id"
-            :label="data.description"
+            :label="data.name"
           />
         </div>
       </div>

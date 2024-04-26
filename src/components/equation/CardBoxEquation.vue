@@ -1,5 +1,4 @@
 <script setup>
-import { buttonMenuOptions } from "@/components/equation/ButtonMenuOptionsEquationMathJax.js";
 import { mdiDotsVertical, mdiHandOkay } from "@mdi/js";
 import CardBox from "@/components/CardBox.vue";
 import BaseLevel from "@/components/BaseLevel.vue";
@@ -12,6 +11,10 @@ defineProps({
   equation: {
     type: Object,
     required: true,
+  },
+  options: {
+    type: Array,
+    default: null,
   },
 });
 </script>
@@ -44,8 +47,12 @@ defineProps({
           <PillTag color="warning" :label="equation.type_equations" small />
         </BaseButtons>
         <ButtonMenu
-          :options="buttonMenuOptions(equation.id)"
+          v-if="options"
+          :options="options"
           :icon="mdiDotsVertical"
+          icon-w="w-4"
+          icon-h="h-4"
+          color="lightDark"
           small
         />
       </BaseLevel>

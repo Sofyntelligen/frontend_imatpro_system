@@ -1,10 +1,14 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { mdiGithub, mdiAlphabetCyrillic, mdiPlusThick } from "@mdi/js";
+import { mdiAlphabetCyrillic, mdiPlusThick } from "@mdi/js";
+import { optionsButtonsDelete } from "@/components/menu/OptionsButtonsDelete.js";
+import { optionsButtonsEdit } from "@/components/menu/OptionsButtonsEdit.js";
+import { optionsButton } from "@/components/menu/OptionsButton.js";
+import { optionsButtons } from "@/components/menu/OptionsButtons.js";
 import SectionMain from "@/components/SectionMain.vue";
 import SectionTitleLineWithButton from "@/components/SectionTitleLineWithButton.vue";
-import CardBoxWidgetMathJax from "@/components/equation/character/CardBoxWidgetMathJax.vue";
+import CardBoxWidget from "@/components/CardBoxWidget.vue";
 import BaseLevel from "@/components/BaseLevel.vue";
 import BaseButtons from "@/components/BaseButtons.vue";
 import BaseButton from "@/components/BaseButton.vue";
@@ -32,6 +36,15 @@ const redirectReload = async () => {
   await router.push({ name: "CharacterAdd" });
   router.go();
 };
+
+const getMenuOptions = (id) => {
+  return optionsButtons(
+    optionsButton(
+      optionsButtonsEdit("/equation/character/update/" + id)[0],
+      optionsButtonsDelete("/character/" + id)[0]
+    )
+  );
+};
 </script>
 
 <template>
@@ -55,13 +68,14 @@ const redirectReload = async () => {
           v-for="data in listCharacter"
           class="col-span-12 sm:col-span-6 xl:col-span-3"
         >
-          <CardBoxWidgetMathJax
+          <CardBoxWidget
+            :number="data.id"
+            :iconMath="data.latex_math"
+            :label="data.description"
+            color="text-yellow-500"
             :trend="data.view"
             :trend-type="data.active ? 'up' : 'down'"
-            color="text-yellow-500"
-            :icon="data.latex_math"
-            :number="data.id"
-            :label="data.description"
+            :options="getMenuOptions(data.id)"
           />
         </div>
       </div>

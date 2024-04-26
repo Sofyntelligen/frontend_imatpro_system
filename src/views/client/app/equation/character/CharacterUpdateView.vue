@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, reactive } from "vue";
+import { onMounted, reactive } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { mdiKeyboardReturn, mdiAlphabetCyrillic, mdiBallot, mdiAccount } from "@mdi/js";
 import SectionMain from "@/components/SectionMain.vue";
@@ -12,24 +12,31 @@ import LayoutAuthenticatedHome from "@/layouts/LayoutAuthenticatedHome.vue";
 import BaseDivider from "@/components/BaseDivider.vue";
 import FormCheckRadioGroup from "@/components/FormCheckRadioGroup.vue";
 import getData from "@/services/ServiceGenericGet.js";
+import putData from "@/services/ServiceGenericPut.js";
 
-const character = ref({});
 const route = useRoute();
 const router = useRouter();
 
-const form = reactive({
-  checkboxTwo: ["active"],
-});
+const formUpdate = reactive({});
 
 onMounted(() => {
-  getData("/character/", route.params.id).then((result) => {
-    character.value = result;
-    console.log(result);
+  getData("/character/" + route.params.id).then((result) => {
+    formUpdate.id = result.id;
+    formUpdate.view = result.view;
+    formUpdate.text = result.text;
+    formUpdate.math_ml = result.math_ml;
+    formUpdate.latex_math = result.latex_math;
+    formUpdate.description = result.description;
+    formUpdate.activeView = result.active == true ? ["active"] : [];
+    formUpdate.active = result.active;
   });
 });
 
 const submit = () => {
-  console.log("add");
+  formUpdate.active = formUpdate.activeView.length != 0 ? true : false;
+  putData("/character/" + formUpdate.id, formUpdate).then((result) => {
+    result != null ? redirectReload() : "";
+  });
 };
 
 const redirectReload = async () => {
@@ -58,16 +65,23 @@ const redirectReload = async () => {
       <CardBox :icon="mdiBallot" is-form @submit.prevent="submit">
         <FormField label="Character" horizontal>
           <FormControl
+            v-model="formUpdate.view"
             :icon-left="mdiAccount"
             help="Your full name"
             placeholder="Character"
           />
         </FormField>
         <FormField label="Text" horizontal>
-          <FormControl :icon-left="mdiAccount" help="Your full name" placeholder="Text" />
+          <FormControl
+            v-model="formUpdate.text"
+            :icon-left="mdiAccount"
+            help="Your full name"
+            placeholder="Text"
+          />
         </FormField>
         <FormField label="MathML" horizontal>
           <FormControl
+            v-model="formUpdate.math_ml"
             :icon-left="mdiAccount"
             help="Your full name"
             placeholder="MathML"
@@ -75,6 +89,7 @@ const redirectReload = async () => {
         </FormField>
         <FormField label="Latex" horizontal>
           <FormControl
+            v-model="formUpdate.latex_math"
             :icon-left="mdiAccount"
             help="Your full name"
             placeholder="Latex"
@@ -85,14 +100,18 @@ const redirectReload = async () => {
           help="Your question. Max 255 characters"
           horizontal
         >
-          <FormControl type="textarea" placeholder="Explain how we can help you" />
+          <FormControl
+            v-model="formUpdate.description"
+            type="textarea"
+            placeholder="Explain how we can help you"
+          />
         </FormField>
 
         <BaseDivider />
 
-        <FormField label="Success" help="Horizontal layout with color" horizontal>
+        <FormField help="Horizontal layout with color" horizontal>
           <FormCheckRadioGroup
-            v-model="form.checkboxTwo"
+            v-model="formUpdate.activeView"
             name="sample-checkbox-two"
             :options="{ active: 'Active' }"
             component-class="check-radio-success"

@@ -10,9 +10,9 @@ class ServiceGeneric {
     }
   }
 
-  get(endpoint, id) {
+  get(endpoint) {
     try {
-      return http.get(endpoint + id)
+      return http.get(endpoint)
     } catch (error) {
       console.error('GET request error : ', error)
       return error.response
@@ -28,18 +28,18 @@ class ServiceGeneric {
     }
   }
 
-  put(endpoint, id, data) {
+  put(endpoint, body) {
     try {
-      return http.delete(endpoint + id, data)
+      return http.put(endpoint, body)
     } catch (error) {
       console.error('PUT request error : ', error)
       return error.response
     }
   }
 
-  delete(endpoint, id) {
+  delete(endpoint) {
     try {
-      return http.delete(endpoint + id)
+      return http.delete(endpoint)
     } catch (error) {
       console.error('DELETE request error : ', error)
       return error.response
