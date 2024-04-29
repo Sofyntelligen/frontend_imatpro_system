@@ -73,51 +73,28 @@ const routes = [
   },
   {
     meta: {
-      title: 'Type Equation Search'
+      title: 'Catalog Search'
     },
-    path: '/equation/type/equation',
-    name: 'TypeEquationSearch',
-    component: () => import('@/views/client/app/equation/type/equation/TypeEquationSearchView.vue')
+    path: '/equation/:type_catalog/catalog/',
+    name: 'CatalogSearch',
+    component: () => import('@/views/client/app/equation/catalog/CatalogSearchView.vue'),
+    props: (route) => ({ title: route.query.title, icon: route.query.icon })
   },
   {
     meta: {
-      title: 'Type Equation Add'
+      title: 'Catalog Add'
     },
-    path: '/equation/type/equation/add',
-    name: 'TypeEquationAdd',
-    component: () => import('@/views/client/app/equation/type/equation/TypeEquationAddView.vue')
+    path: '/equation/:type/catalog/add',
+    name: 'CatalogAdd',
+    component: () => import('@/views/client/app/equation/catalog/CatalogAddView.vue')
   },
   {
     meta: {
-      title: 'Type Equation Update'
+      title: 'Catalog Update'
     },
-    path: '/equation/type/equation/update/:id',
-    name: 'TypeEquationUpdate',
-    component: () => import('@/views/client/app/equation/type/equation/TypeEquationUpdateView.vue')
-  },
-  {
-    meta: {
-      title: 'Grade School Search'
-    },
-    path: '/equation/grade/school',
-    name: 'GradeSchoolSearch',
-    component: () => import('@/views/client/app/equation/grade/school/GradeSchoolSearchView.vue')
-  },
-  {
-    meta: {
-      title: 'Grade School Add'
-    },
-    path: '/equation/grade/school/add',
-    name: 'GradeSchoolAdd',
-    component: () => import('@/views/client/app/equation/grade/school/GradeSchoolAddView.vue')
-  },
-  {
-    meta: {
-      title: 'Grade School Update'
-    },
-    path: '/equation/grade/school/update/:id',
-    name: 'GradeSchoolUpdate',
-    component: () => import('@/views/client/app/equation/grade/school/GradeSchoolUpdateView.vue')
+    path: '/equation/:type/catalog/update/:id',
+    name: 'CatalogUpdate',
+    component: () => import('@/views/client/app/equation/catalog/CatalogUpdateView.vue')
   },
   {
     meta: {

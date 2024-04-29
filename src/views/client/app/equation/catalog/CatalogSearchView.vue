@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { useRouter } from "vue-router";
-import { mdiChairSchool, mdiPlusThick } from "@mdi/js";
+import { useRoute, useRouter } from "vue-router";
+import { mdiPlusThick } from "@mdi/js";
 import SectionMain from "@/components/SectionMain.vue";
 import SectionTitleLineWithButton from "@/components/SectionTitleLineWithButton.vue";
 import CardBoxWidget from "@/components/CardBoxWidget.vue";
@@ -14,6 +14,7 @@ import getAllData from "@/services/ServiceGenericGetAll.js";
 const listCharacter = ref([]);
 const numPages = ref(0);
 const currentPage = ref(0);
+const route = useRoute();
 const router = useRouter();
 
 onMounted(() => {
@@ -21,7 +22,7 @@ onMounted(() => {
 });
 
 const getCharacter = (page) => {
-  getAllData("/catalog/grade_school/all", page).then((result) => {
+  getAllData("/catalog/" + route.params.type_catalog + "/all", page).then((result) => {
     console.log(result);
     listCharacter.value = result.data;
     currentPage.value = page;
@@ -30,7 +31,7 @@ const getCharacter = (page) => {
 };
 
 const redirectReload = async () => {
-  await router.push({ name: "GradeSchoolAdd" });
+  await router.push({ name: "CatalogAdd" });
   router.go();
 };
 </script>
@@ -38,7 +39,11 @@ const redirectReload = async () => {
 <template>
   <LayoutAuthenticatedHome>
     <SectionMain>
-      <SectionTitleLineWithButton :icon="mdiChairSchool" title="Grade School" main>
+      <SectionTitleLineWithButton
+        :icon="route.query.icon"
+        :title="route.query.title"
+        main
+      >
         <div>
           <BaseButton
             class="md:mr-3"
