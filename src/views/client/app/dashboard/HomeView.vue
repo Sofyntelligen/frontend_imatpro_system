@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
+import { useRouter } from "vue-router";
 import { useMainStore } from "@/stores/main.js";
 import { useSnackBarStore } from "@/stores/snackBar.js";
 import { mdiChartPie, mdiGithub, mdiOpenInNew } from "@mdi/js";
@@ -19,6 +20,7 @@ import LayoutAuthenticatedHome from "@/layouts/LayoutAuthenticatedHome.vue";
 import getAllData from "@/services/ServiceGenericGetAll";
 
 const snackBarStore = useSnackBarStore();
+const router = useRouter();
 
 snackBarStore.pushMessage("Welcome to Sofyntelligen.", "contrast");
 
@@ -31,13 +33,14 @@ onMounted(() => {
 });
 
 const redirectReload = async () => {
-  await router.push({ name: "CharacterAdd" });
+  await router.push({ name: "EquationAdd" });
   router.go();
 };
 
 const getEquationPagination = (page) => {
   getAllData("/equation/all", page, { type_representation: "PRINCIPAL" }).then(
     (result) => {
+      console.log(result.data);
       listEquation.value = result.data;
       currentPage.value = page;
       numPages.value = result.pagination.pages;
@@ -45,14 +48,13 @@ const getEquationPagination = (page) => {
   );
 };
 
-const getMenuOptions = (id) => {
+const getMenuOptions = (id, solution_id) => {
   return optionsButtons(
     optionsButton(
-      optionsButtonsGet("/equation/character/update/" + id)[0],
-      optionsButtonsEdit("/equation/character/update/" + id)[0],
-      optionsButtonsDelete("/character/" + id)[0]
+      optionsButtonsEdit("/equation/update/" + id)[0],
+      optionsButtonsDelete("/equation/" + id)[0]
     ),
-    optionsButtonsSolutionEquation("/equation/character/update/" + id)[0]
+    optionsButton(optionsButtonsSolutionEquation("/equation/" + solution_id)[0])
   );
 };
 </script>
@@ -86,7 +88,7 @@ const getMenuOptions = (id) => {
         v-for="equation in listEquation"
         :key="equation.id"
         :equation="equation"
-        :options="getMenuOptions(equation.id)"
+        :options="getMenuOptions(equation.id, equation.solution_id)"
       />
       <div class="p-3 lg:px-6 border-t border-gray-100 dark:border-slate-800">
         <BaseLevel>

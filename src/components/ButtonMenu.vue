@@ -1,9 +1,13 @@
 <script setup>
+import { ref } from "vue";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 import { mdiChevronDown } from "@mdi/js";
+import CardBoxModal from "@/components/CardBoxModal.vue";
 import BaseIcon from "@/components/BaseIcon.vue";
 import BaseButton from "@/components/BaseButton.vue";
+import deleteData from "@/services/ServicesGenericDelete.js";
 
 const props = defineProps({
   icon: {
@@ -48,11 +52,16 @@ const props = defineProps({
   disabled: Boolean,
 });
 
+const modalDeleteActive = ref(false);
+const pathDelete = ref();
+
+const router = useRouter();
 const emit = defineEmits(["update:modelValue"]);
 
 computed({
   get: () => props.modelValue,
   set: (value) => {
+    console.log(value);
     emit("update:modelValue", value);
   },
 });
@@ -60,9 +69,53 @@ computed({
 const iconRightComputed = computed(() =>
   props.label && !props.icon && !props.iconRight ? mdiChevronDown : props.iconRight
 );
+
+const redirectOption = async (value) => {
+  await router.push({ path: value });
+  router.go();
+};
+
+const deleteModal = (value) => {
+  modalDeleteActive.value = true;
+  pathDelete.value = value;
+};
+
+const deleteObject = () => {
+  deleteData(pathDelete.value);
+  window.location.reload();
+};
+
+const actionButton = (option, value) => {
+  console.log(option);
+  console.log(value);
+  switch (option) {
+    case 1:
+      break;
+    case 2:
+      break;
+    case 3:
+    case 5:
+      redirectOption(value);
+      break;
+    case 4:
+      deleteModal(value);
+      break;
+    default:
+  }
+};
 </script>
 
 <template>
+  <CardBoxModal
+    v-model="modalDeleteActive"
+    title="Please confirm"
+    button="danger"
+    has-cancel
+    @confirm="deleteObject()"
+  >
+    <p>Lorem ipsum dolor sit amet <b>adipiscing elit</b></p>
+    <p>This is sample modal</p>
+  </CardBoxModal>
   <Menu as="div" class="relative inline-block text-left">
     <div>
       <MenuButton v-slot="{ open }" :disabled="disabled">
@@ -99,6 +152,7 @@ const iconRightComputed = computed(() =>
             <button
               :class="{ 'bg-gray-100 dark:bg-slate-700': active }"
               class="group flex rounded-md items-center w-full px-2 py-2 text-sm"
+              @click="actionButton(option.id, option.to)"
             >
               <BaseIcon :path="option.icon" class="mr-3" />
               <span>{{ option.label }}</span>

@@ -49,6 +49,30 @@ const routes = [
   },
   {
     meta: {
+      title: 'Equation Search'
+    },
+    path: '/equation/:id',
+    name: 'EquationSearch',
+    component: () => import('@/views/client/app/equation/EquationSearchView.vue')
+  },
+  {
+    meta: {
+      title: 'Equation Add'
+    },
+    path: '/equation/add',
+    name: 'EquationAdd',
+    component: () => import('@/views/client/app/equation/EquationAddView.vue')
+  },
+  {
+    meta: {
+      title: 'Equation Update'
+    },
+    path: '/equation/update/:id',
+    name: 'EquationUpdate',
+    component: () => import('@/views/client/app/equation/EquationUpdateView.vue')
+  },
+  {
+    meta: {
       title: 'Character Search'
     },
     path: '/equation/character',
@@ -75,7 +99,7 @@ const routes = [
     meta: {
       title: 'Catalog Search'
     },
-    path: '/equation/:type_catalog/catalog/',
+    path: '/equation/:type_catalog/catalog',
     name: 'CatalogSearch',
     component: () => import('@/views/client/app/equation/catalog/CatalogSearchView.vue'),
     props: (route) => ({ title: route.query.title, icon: route.query.icon })
@@ -84,9 +108,10 @@ const routes = [
     meta: {
       title: 'Catalog Add'
     },
-    path: '/equation/:type/catalog/add',
+    path: '/equation/:type_catalog/catalog/add',
     name: 'CatalogAdd',
-    component: () => import('@/views/client/app/equation/catalog/CatalogAddView.vue')
+    component: () => import('@/views/client/app/equation/catalog/CatalogAddView.vue'),
+    props: (route) => ({ title: route.query.title, icon: route.query.icon })
   },
   {
     meta: {

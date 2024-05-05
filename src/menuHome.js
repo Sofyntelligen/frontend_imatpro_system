@@ -39,12 +39,12 @@ export default [
         icon: mdiAlphabetCyrillic
       },
       {
-        to: '/equation/type_equation/catalog?title=Type Equation&icon=',
+        to: '/equation/type_equation/catalog?title=Type Equation&icon=' + mdiAbacus,
         label: 'Type Equation',
         icon: mdiAbacus
       },
       {
-        to: '/equation/grade_school/catalog?title=Grade School&icon=',
+        to: '/equation/grade_school/catalog?title=Grade School&icon=' + mdiChairSchool,
         label: 'Grade School',
         icon: mdiChairSchool
       },

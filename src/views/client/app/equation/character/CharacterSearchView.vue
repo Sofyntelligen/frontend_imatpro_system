@@ -51,17 +51,15 @@ const getMenuOptions = (id) => {
   <LayoutAuthenticatedHome>
     <SectionMain>
       <SectionTitleLineWithButton :icon="mdiAlphabetCyrillic" title="Character" main>
-        <div>
-          <BaseButton
-            class="md:mr-3"
-            label="Add"
-            :icon="mdiPlusThick"
-            color="success"
-            rounded-full
-            small
-            @click="redirectReload"
-          />
-        </div>
+        <BaseButton
+          class="md:mr-3"
+          label="Add"
+          :icon="mdiPlusThick"
+          color="success"
+          rounded-full
+          small
+          @click="redirectReload"
+        />
       </SectionTitleLineWithButton>
       <div class="grid grid-cols-12 gap-6 mb-6">
         <div

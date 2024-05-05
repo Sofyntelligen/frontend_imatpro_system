@@ -5,7 +5,7 @@ import NumberDynamic from "@/components/NumberDynamic.vue";
 import BaseIcon from "@/components/BaseIcon.vue";
 import BaseLevel from "@/components/BaseLevel.vue";
 import PillTagTrend from "@/components/PillTagTrend.vue";
-import ButtonMenuCharacter from "@/components/equation/character/ButtonMenuCharacter.vue";
+import ButtonMenu from "@/components/ButtonMenu.vue";
 import VueMathjax from "vue-mathjax-next";
 
 const props = defineProps({
@@ -56,7 +56,7 @@ const props = defineProps({
   <CardBox>
     <BaseLevel v-if="trend" class="mb-3" mobile>
       <PillTagTrend :trend="trend" :trend-type="trendType" small />
-      <ButtonMenuCharacter
+      <ButtonMenu
         v-if="options"
         :options="options"
         :icon="mdiCog"

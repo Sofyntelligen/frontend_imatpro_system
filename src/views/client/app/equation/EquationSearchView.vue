@@ -1,7 +1,11 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { mdiPlusThick } from "@mdi/js";
+import { mdiAlphabetCyrillic, mdiKeyboardReturn } from "@mdi/js";
+import { optionsButtonsDelete } from "@/components/menu/OptionsButtonsDelete.js";
+import { optionsButtonsEdit } from "@/components/menu/OptionsButtonsEdit.js";
+import { optionsButton } from "@/components/menu/OptionsButton.js";
+import { optionsButtons } from "@/components/menu/OptionsButtons.js";
 import SectionMain from "@/components/SectionMain.vue";
 import SectionTitleLineWithButton from "@/components/SectionTitleLineWithButton.vue";
 import CardBoxWidget from "@/components/CardBoxWidget.vue";
@@ -22,35 +26,39 @@ onMounted(() => {
 });
 
 const getCharacter = (page) => {
-  getAllData("/catalog/" + route.params.type_catalog + "/all", page).then((result) => {
-    listCharacter.value = result.data;
-    currentPage.value = page;
-    numPages.value = result.pagination.pages;
-  });
+  getAllData("/equation/representation/all", page, { solution_id: route.params.id }).then(
+    (result) => {
+      console.log(result.data);
+      listCharacter.value = result.data;
+      currentPage.value = page;
+      numPages.value = result.pagination.pages;
+    }
+  );
 };
 
 const redirectReload = async () => {
-  await router.push({
-    path: "/equation/" + route.params.type_catalog + "/catalog/add",
-    query: { title: route.query.title, icon: route.query.icon },
-  });
+  await router.push({ name: "Dashboard" });
   router.go();
+};
+
+const getMenuOptions = (id) => {
+  return optionsButtons(
+    optionsButton(
+      optionsButtonsEdit("/equation/character/update/" + id)[0],
+      optionsButtonsDelete("/character/" + id)[0]
+    )
+  );
 };
 </script>
 
 <template>
   <LayoutAuthenticatedHome>
     <SectionMain>
-      <SectionTitleLineWithButton
-        :icon="route.query.icon"
-        :title="route.query.title"
-        main
-      >
+      <SectionTitleLineWithButton :icon="mdiAlphabetCyrillic" title="Character" main>
         <BaseButton
-          class="md:mr-3"
-          label="Add"
-          :icon="mdiPlusThick"
-          color="success"
+          label="Return"
+          :icon="mdiKeyboardReturn"
+          color="contrast"
           rounded-full
           small
           @click="redirectReload"
@@ -62,10 +70,13 @@ const redirectReload = async () => {
           class="col-span-12 sm:col-span-6 xl:col-span-3"
         >
           <CardBoxWidget
-            :trend="data.value"
-            trend-type="down"
+            :number="data.id"
+            :iconMath="data.latex_math"
+            :label="data.description"
             color="text-yellow-500"
-            :label="data.name"
+            :trend="data.view"
+            :trend-type="data.active ? 'up' : 'down'"
+            :options="getMenuOptions(data.id)"
           />
         </div>
       </div>
